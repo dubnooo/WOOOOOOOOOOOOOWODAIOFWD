@@ -5,6 +5,11 @@ body {
     color: #fff;
 }
 
+iframe {
+    margin: 20px;
+    border: 3px solid blue;
+}
+
 .sidebar {
     position: fixed;
     top: 0;
