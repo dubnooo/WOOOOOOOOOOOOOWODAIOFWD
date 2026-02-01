@@ -3,12 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мій Ігровий Хаб</title>
-    <!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BO — Головна</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,7 +10,7 @@
 
 <div class="sidebar">
     <div class="logo">BO</div>
-    <a href="index.html" class="menu-item">Головна</a>
+    <a href="page.html" class="menu-item">Головна</a>
     <a href="search.html" class="menu-item">Пошук</a>
     <a href="notifications.html" class="menu-item">Сповіщення</a>
     <a href="messages.html" class="menu-item">Повідомлення</a>
@@ -25,206 +19,7 @@
     <a href="gamehub.html" class="menu-item active">Геймерський Хаб</a>
 </div>
 
-<div class="main">
-    <div class="header">Головна</div>
-    <style>
-        :root {
-            --primary: #6c5ce7;
-            --secondary: #a29bfe;
-            --dark: #2d3436;
-            --light: #dfe6e9;
-        }
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--dark);<!DOC
-            color: white;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header {
-            background: var(--primary);
-            width: 100%;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        /* Навігація (Вкладки) */
-        .nav-tabs {
-            display: flex;
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .tab-btn {
-            padding: 12px 25px;
-            background: #444;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            transform: scale(1.1);
-        }
-
-        .game-section {
-            display: none; /* Ховаємо всі ігри за замовчуванням */
-            width: 90%;
-            max-width: 900px;
-            background: white;
-            color: #333;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            text-align: center;
-        }
-
-        .game-section.active {
-            display: block; /* Показуємо тільки активну */
-        }
-
-        /* Стилі для Клікера */
-        #target {
-            width: 60px; height: 60px;
-            background: #ff7675;
-            position: absolute;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        #game-area {
-            width: 100%; height: 300px;
-            background: #fab1a0;
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-
-        /* Стилі для Малювання */
-        canvas {
-            border: 2px solid #333;
-            background: #fff;
-            cursor: crosshair;
-            width: 100%;
-            max-width: 700px;
-        }
-
-        /* Стилі для RPG */
-        .rpg-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-        .card {
-            border: 3px solid var(--primary);
-            padding: 20px;
-            border-radius: 10px;
-            min-width: 200px;
-            background: #f9f9f9;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>🎮 Мій JS Ігровий Хаб</h1>
-</header>
-
-<div class="nav-tabs">
-    <button class="tab-btn active" onclick="openGame('clicker', this)">Клікер</button>
-    <button class="tab-btn" onclick="openGame('paint', this)">Малювання</button>
-    <button class="tab-btn" onclick="openGame('rpg', this)">Герой</button>
-</div>
-
-<div id="clicker" class="game-section active">
-    <h2>Впіймай коло!</h2>
-    <p>Рахунок: <span id="score">0</span></p>
-    <div id="game-area">
-        <div id="target" onclick="hitTarget()"></div>
-    </div>
-</div>
-
-<div id="paint" class="game-section">
-    <h2>Міні-Малювання</h2>
-    <div style="margin-bottom: 10px;">
-        <input type="color" id="penColor">
-        <input type="range" id="penSize" min="1" max="20" value="5">
-        <button onclick="clearCanvas()" style="padding: 5px 15px;">Очистити</button>
-    </div>
-    <canvas id="canvas" width="700" height="400"></canvas>
-</div>
-
-<div id="rpg" class="game-section">
-    <h2>Створювач Персонажа</h2>
-    <div class="rpg-container">
-        <div style="text-align: left;">
-            <label>Ім'я:</label><br>
-            <input type="text" id="heroName" style="padding: 8px; width: 100%;"><br><br>
-            <button onclick="generateHero()" style="background: var(--primary); color: white; border: none; padding: 10px; width: 100%; cursor: pointer;">Згенерувати</button>
-        </div>
-        <div class="card" id="heroCard">
-            <h3 id="cardTitle">Твій герой</h3>
-            <p id="cardPower">Сила: 0</p>
-            <p id="cardLuck">Удача: 0</p>
-        </div>
-    </div>
-</div>
-
-<script>
-    // ЛОГІКА ПЕРЕМИКАННЯ ВКЛАДОК
-    function openGame(gameId, btn) {
-        document.querySelectorAll('.game-section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(gameId).classList.add('active');
-        btn.classList.add('active');
-    }
-
-    // ЛОГІКА КЛІКЕРА
-    let score = 0;
-    function hitTarget() {
-        score++;
-        document.getElementById('score').innerText = score;
-        const target = document.getElementById('target');
-        const area = document.getElementById('game-area');
-        const x = Math.random() * (area.clientWidth - 60);
-        const y = Math.random() * (area.clientHeight - 60);
-        target.style.left = x + 'px';
-        target.style.top = y + 'px';
-    }
-    hitTarget(); // Поставити в початкову позицію
-
-    // ЛОГІКА МАЛЮВАННЯ
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    let drawing = false;
-
-    canvas.addEventListener('mousedown', () => drawing = true);
-    canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
-    canvas.addEventListener('mousemove', (e) => {
-        if (!drawing) return;
-        const rect = canvas.getBoundingClientRect();
-        ctx.lineWidth = document.getElementById('penSize').value;
-        ctx.lineCap = 'round';
-        ctx.strokeStyle = document.getElementById('penColor').value;
-        ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-        ctx.stroke();
-    });
-    function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
-
-    // ЛОГІКА RPG
-    function generateHero() {
-        const name = document.getElementById('heroName').value || "Мандрівник";
-        const power = Math.floor(Math.random() * 100);
-        const luck = Math.floor(Math.random() * 100);
-        document.getElementById('cardTitle').innerText = "💪 " + name;
-        document.getElementById('cardPower').innerText = "Сила: " + power;
-        document.getElementById('cardLuck').innerText = "Удача: " + luck;
-    }
-</script>
 
 </body>
 </html>
