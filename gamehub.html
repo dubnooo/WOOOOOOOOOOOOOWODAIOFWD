@@ -19,12 +19,24 @@
     <a href="gamehub.html" class="menu-item active">Геймерський Хаб</a>
 </div>
 
+<div class="main">
+    <div class="header">Геймерський Хаб</div>
+    
+    <div class="nav-tabs">
+    <button class="tab-btn active" onclick="openGame('clicker', this)">Клікер</button>
+    <button class="tab-btn" onclick="openGame('paint', this)">Малювання</button>
+    <button class="tab-btn" onclick="openGame('rpg', this)">Герой</button>
+</div>
 
+<div id="clicker" class="game-section active">
+    <h2>Впіймай NVIDIA GEFORCE RTX 6000 WORKSTATION</h2>
+    <p>Рахунок: <span id="score">0</span></p>
+    <div id="game-area">
+        <div id="target" onclick="hitTarget()"></div>
+    </div>
+</div>
 
     
-
-    
-
 
 </body>
 </html>
