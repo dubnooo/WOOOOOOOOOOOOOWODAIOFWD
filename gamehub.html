@@ -28,15 +28,88 @@
     <button class="tab-btn" onclick="openGame('rpg', this)">Герой</button>
 </div>
 
+
+
+<div id="paint" class="game-section">
+    <h2>Міні-Малювання</h2>
+    <div style="margin-bottom: 10px;">
+        <input type="color" id="penColor">
+        <input type="range" id="penSize" min="1" max="20" value="5">
+        <button onclick="clearCanvas()" style="padding: 5px 15px;">Очистити</button>
+    </div>
+    <canvas id="canvas" width="700" height="400"></canvas>
+</div>
+
+<div id="rpg" class="game-section">
+    <h2>Створювач Персонажа</h2>
+    <div class="rpg-container">
+        <div style="text-align: left;">
+            <label>Ім'я:</label><br>
+            <input type="text" id="heroName" style="padding: 8px; width: 100%;"><br><br>
+            <button onclick="generateHero()" style="background: var(--primary); color: white; border: none; padding: 10px; width: 100%; cursor: pointer;">Згенерувати</button>
+        </div>
+        <div class="card" id="heroCard">
+            <h3 id="cardTitle">Твій герой</h3>
+            <p id="cardPower">Сила: 0</p>
+            <p id="cardLuck">Удача: 0</p>
+        </div>
+    </div>
+</div>
+
 <div id="clicker" class="game-section active">
-    <h2>Впіймай NVIDIA GEFORCE RTX 6000 WORKSTATION</h2>
+    <h2>Впіймай geforce rtx pro 6000 blackwell workstation edition</h2>
     <p>Рахунок: <span id="score">0</span></p>
     <div id="game-area">
         <div id="target" onclick="hitTarget()"></div>
     </div>
 </div>
+<script>
+ let score = 0;
+    function hitTarget() {
+        score++;
+        document.getElementById('score').innerText = score;
+        const target = document.getElementById('target');
+        const area = document.getElementById('game-area');
+        const x = Math.random() * (area.clientWidth - 60);
+        const y = Math.random() * (area.clientHeight - 60);
+        target.style.left = x + 'px';
+        target.style.top = y + 'px';
+    }
+    hitTarget();
 
-    
+     function openGame(gameId, btn) {
+        document.querySelectorAll('.game-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(gameId).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+
+    canvas.addEventListener('mousedown', () => drawing = true);
+    canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
+    canvas.addEventListener('mousemove', (e) => {
+        if (!drawing) return;
+        const rect = canvas.getBoundingClientRect();
+        ctx.lineWidth = document.getElementById('penSize').value;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = document.getElementById('penColor').value;
+        ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+        ctx.stroke();
+    });
+    function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
+    function generateHero() {
+        const name = document.getElementById('heroName').value || "Мандрівник";
+        const power = Math.floor(Math.random() * 100);
+        const luck = Math.floor(Math.random() * 100);
+        document.getElementById('cardTitle').innerText = "💪 " + name;
+        document.getElementById('cardPower').innerText = "Сила: " + power;
+        document.getElementById('cardLuck').innerText = "Удача: " + luck;
+    }
+ </script>   
 
 </body>
 </html>
