@@ -50,9 +50,10 @@
         /* Стилі для Клікера */
         #target {
             width: 60px; height: 60px;
-            background: #ff7675;
+            background-image: url(https://learn.logikaschool.com/uploads/student/5213519/6991cccbdcc41.png);
+            background-size: cover;
             position: absolute;
-            border-radius: 50%;
+            
             cursor: pointer;
         }
         #game-area {
@@ -219,3 +220,5 @@ iframe {
     border-radius: 50%;
     border-bottom: 1px solid #2f3336;
 }
+
+.
