@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BO — Музика</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo">BO</div>
+    <a href="page.html" class="menu-item">Головна</a>
+    <a href="search.html" class="menu-item">Пошук</a>
+    <a href="notifications.html" class="menu-item">Сповіщення</a>
+    <a href="messages.html" class="menu-item">Повідомлення</a>
+    <a href="profile.html" class="menu-item">Профіль</a>
+    <a href="settings.html" class="menu-item">Налаштування</a>
+    <a href="gamehub.html" class="menu-item active">Геймерський Хаб</a>
+    <a href="musilk.html" class="menu-item active">WOtify</a>
+</div>
+
+<div class="main">
+    <div class="header">🎵 WOtify</div>
+
+    <div class="post-box" style="padding-bottom: 20px;"> 
+        <h2 style="padding-left: 20px;">Пісні які вам сподобались</h2>
+        <div style="display:flex; gap:20px; overflow-x:auto; padding: 0 20px;">
+            <div onclick="playSong('song1.mp3','Feel Good Inc.')" style="cursor:pointer; text-align:center; min-width: 150px;">
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0d28khcov6AiegSCpG5TuT?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <p>🎵 Feel Good Inc.</p>
+            </div>
+            <div onclick="playSong('song2.mp3','Clint Eastwood')" style="cursor:pointer; text-align:center; min-width: 150px;">
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/1RKUoGiLEbcXN4GY4spQDx?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <p>🎵 Clint Eastwood</p>
+            </div>
+        </div>
+    </div> <div class="post-box2">
+        <h2>Для вас 😎</h2>
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/3S41zT1PsTvoqHHEUv7xCc?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2aan8Cc8ewI7ABej7xnXJO?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6kNH5AaJkUQW2wDGIfhOjx?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/374e9FlvnxntYjvqcq7jRQ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+    </div>
+
+    <div class="post-box2">
+        <h2 style="margin-bottom: 20px;">Ваші Плейлисти 📂</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 20px;">
+            
+            <div>
+             <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/3AA28KZvwAUcZuOKwyblJQ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>   
+            </div>
+
+            <div>
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/5HLfYFRFHhhDAswKM6rFeS?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
+            <div>
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/41l3KGLex0bMehOuTjAyiA?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
+            <div>
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/4d3xJkRPmqX0jfvI3pgeXh?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+        
+<script>
+function playSong(file, title) {
+    var player = document.getElementById("audioPlayer");
+    var nowPlaying = document.getElementById("nowPlaying");
+    player.src = file;
+    nowPlaying.innerText = title;
+    player.play();
+}
+</script>
+
+</body>
+</html>
