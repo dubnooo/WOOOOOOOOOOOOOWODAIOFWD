@@ -221,11 +221,20 @@ iframe {
     border-bottom: 1px solid #2f3336;
 }
 
+/* Виправляємо відступи, щоб лінія прилягала до країв сайдбару */
 .post-box2 {
-    padding: 25px;
-    border-top: 5px solid #2f3336;   /* товста лінія зверху */
+    padding: 20px;
+    border-top: 5px solid #2f3336; /* Та сама товста лінія-розділювач */
     border-bottom: 1px solid #2f3336;
-    background: #000;
+    margin-top: 0; /* Прибираємо відступ, щоб лінія йшла одразу за попереднім блоком */
 }
 
+/* Додамо плавності скролу для пісень */
+.main::-webkit-scrollbar {
+    width: 8px;
+}
+.main::-webkit-scrollbar-thumb {
+    background: #2f3336;
+    border-radius: 10px;
+}
 .
