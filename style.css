@@ -221,4 +221,11 @@ iframe {
     border-bottom: 1px solid #2f3336;
 }
 
+.post-box2 {
+    padding: 25px;
+    border-top: 5px solid #2f3336;   /* товста лінія зверху */
+    border-bottom: 1px solid #2f3336;
+    background: #000;
+}
+
 .
